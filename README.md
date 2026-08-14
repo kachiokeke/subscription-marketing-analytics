@@ -4,6 +4,10 @@ An end-to-end analytics project that transforms raw subscription marketing and u
 
 > **Data availability:** The original raw data was provided as part of a private technical exercise and is intentionally excluded from this public repository. The transformation, testing, modelling, and application logic are included in full.
 
+## Dashboard Preview
+
+![Subscription Marketing Analytics dashboard](assets/campaign-dashboard.png)
+
 ## Business Problem
 
 The project was built around two marketing questions:

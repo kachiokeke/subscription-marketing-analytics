@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: stg_marketing_campaigns
+    description: "Cleaned campaign reference data with one row per campaign."
+    columns:
+      - name: campaign_id
+        description: "Unique identifier for the marketing campaign."
+        tests:
+          - not_null
+          - unique
+
+      - name: campaign_name
+        description: "Business-facing name of the marketing campaign."
+        tests:
+          - not_null
+
+      - name: campaign_type
+        description: "Advertising channel or campaign category."
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - Display
+                - Influencer
+                - Search
+                - Social
+                - Video

@@ -1,0 +1,60 @@
+version: 2
+
+models:
+  - name: mart_campaign_performance
+    description: >
+      Campaign-level performance metrics for mapped marketing
+      campaigns. Daily spend is matched to user cohorts on campaign
+      and attribution date before the results are rolled up.
+
+    columns:
+      - name: campaign_id
+        description: "Unique identifier for the mapped campaign."
+        tests:
+          - not_null
+          - unique
+
+      - name: campaign_name
+        description: "Business-facing campaign name."
+        tests:
+          - not_null
+
+      - name: campaign_type
+        description: "Advertising channel or campaign category."
+        tests:
+          - not_null
+
+      - name: attributed_users
+        description: >
+          Number of users assigned to the campaign at onboarding.
+        tests:
+          - not_null
+
+      - name: trial_users
+        description: >
+          Number of attributed users with a recorded trial.
+        tests:
+          - not_null
+
+      - name: sale_users
+        description: >
+          Number of attributed users with at least one sale.
+        tests:
+          - not_null
+
+      - name: total_spend
+        description: "Total recorded spend for the campaign."
+        tests:
+          - not_null
+
+      - name: initial_sale_revenue
+        description: >
+          Revenue recorded at each user's first sale timestamp.
+        tests:
+          - not_null
+
+      - name: total_sale_revenue
+        description: >
+          Revenue from all recorded sales attributed to the campaign.
+        tests:
+          - not_null

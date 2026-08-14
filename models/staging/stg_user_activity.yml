@@ -1,0 +1,77 @@
+version: 2
+
+models:
+  - name: stg_user_activity
+    description: >
+      Cleaned user activity with one row per recorded event.
+      Event fields are standardized for downstream journey,
+      campaign, and modeling analysis.
+
+    columns:
+      - name: activity_id
+        description: >
+          Deterministic event identifier generated from the
+          normalized event fields.
+        tests:
+          - not_null
+          - unique
+
+      - name: user_id
+        description: "Identifier for the user who generated the event."
+        tests:
+          - not_null
+
+      - name: event_type
+        description: "Normalized stage in the user journey."
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - start_onboarding
+                - start_trial
+                - sale
+
+      - name: event_at
+        description: "Timestamp when the event occurred."
+        tests:
+          - not_null
+
+      - name: revenue_amount
+        description: >
+          Revenue for sale events. The value is null for
+          onboarding and trial events.
+
+      - name: attribution_date
+        description: >
+          Date of the user's first onboarding event and the
+          canonical date for campaign attribution.
+        tests:
+          - not_null
+
+      - name: onboarding_name
+        description: >
+          Normalized onboarding experience. Missing values
+          are standardized as unknown.
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - fitness
+                - focus
+                - sleep
+                - standard
+                - unknown
+
+      - name: source_date
+        description: >
+          Date carried in the source dt field. Retained for
+          traceability.
+        tests:
+          - not_null
+
+      - name: campaign_id
+        description: >
+          Campaign assigned at the user's first onboarding event.
+          C999 is retained as an unmapped source campaign.
+        tests:
+          - not_null

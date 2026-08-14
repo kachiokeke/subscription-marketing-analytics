@@ -1,0 +1,24 @@
+name: 'subscription_marketing_analytics'
+version: '1.0.0'
+config-version: 2
+
+profile: 'subscription_marketing_analytics'
+
+model-paths: ["models"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+
+target-path: "target"
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  subscription_marketing_analytics:
+    staging:
+      +materialized: table
+    core:
+      +materialized: table
+    features:
+      +materialized: table

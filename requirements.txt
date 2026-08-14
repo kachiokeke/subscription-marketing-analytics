@@ -1,0 +1,6 @@
+dbt-core==1.9.0
+dbt-duckdb==1.9.0
+duckdb>=1.0.0
+pandas>=2.0.0
+scikit-learn>=1.4.0
+streamlit>=1.30.0

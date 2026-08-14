@@ -1,0 +1,55 @@
+version: 2
+
+sources:
+  - name: raw
+    description: "Raw CSV files loaded directly by DuckDB via read_csv_auto."
+    meta:
+      external_location: "read_csv_auto('data/raw/{name}.csv')"
+    tables:
+      - name: marketing_spend
+        description: "Daily marketing spend by campaign."
+        columns:
+          - name: date
+            description: "Calendar date (UTC)."
+          - name: campaign_id
+            description: "FK to marketing_campaigns.campaign_id."
+          - name: spend
+            description: "Ad spend in EUR."
+
+      - name: marketing_campaigns
+        description: "Reference table of campaigns."
+        columns:
+          - name: campaign_id
+          - name: campaign_name
+          - name: campaign_type
+
+      - name: dim_user
+        description: "User-level attributes. May contain duplicates and inconsistencies."
+        columns:
+          - name: user_id
+          - name: gender
+          - name: country
+          - name: campaign_id
+            description: "Attributed acquisition campaign."
+
+      - name: user_activity
+        description: |
+          Event log with one row per recorded onboarding, trial, or sale event.
+          Some users have a sale without a recorded trial, some users have two
+          sale events, and some onboarding names are missing.
+        columns:
+          - name: user_id
+          - name: event_type
+            description: "Recorded event type: start_onboarding, start_trial, or sale."
+          - name: event_date
+            description: "Timestamp when the event occurred."
+          - name: revenue_amount
+            description: "EUR revenue for sale events; null or zero for non-sale events in the raw source."
+          - name: attribution_date
+            description: "Date of first observed start_onboarding per user."
+          - name: onboarding_name
+            description: "Assigned onboarding flow."
+          - name: dt
+            description: "Partition/date column carried from source."
+          - name: campaign_id
+            description: "FK to marketing_campaigns.campaign_id."

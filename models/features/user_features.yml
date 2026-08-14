@@ -1,0 +1,88 @@
+version: 2
+
+models:
+  - name: user_features
+    description: >
+      User-level feature table for trial and sale prediction.
+      Predictors are limited to information available at
+      onboarding to prevent target leakage.
+
+    columns:
+      - name: user_id
+        description: "Unique identifier for the model observation."
+        tests:
+          - not_null
+          - unique
+
+      - name: attribution_date
+        description: >
+          User acquisition date. Used to create a chronological
+          training and evaluation split.
+        tests:
+          - not_null
+
+      - name: gender
+        description: "Normalized gender category available at onboarding."
+        tests:
+          - not_null
+
+      - name: country
+        description: "Normalized country category available at onboarding."
+        tests:
+          - not_null
+
+      - name: campaign_id
+        description: "Campaign assigned on the onboarding event."
+        tests:
+          - not_null
+
+      - name: campaign_label
+        description: >
+          Readable campaign feature containing the campaign ID
+          and campaign name. C999 is labeled as unmapped.
+        tests:
+          - not_null
+
+      - name: onboarding_name
+        description: "Normalized onboarding experience."
+        tests:
+          - not_null
+
+      - name: attribution_weekday
+        description: "Weekday of the user's attribution date."
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - monday
+                - tuesday
+                - wednesday
+                - thursday
+                - friday
+                - saturday
+                - sunday
+
+      - name: attribution_month
+        description: "Calendar month of the user's attribution date."
+        tests:
+          - not_null
+
+      - name: started_trial
+        description: >
+          Prediction target equal to one when a trial event exists.
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - 0
+                - 1
+
+      - name: made_sale
+        description: >
+          Prediction target equal to one when at least one sale exists.
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - 0
+                - 1

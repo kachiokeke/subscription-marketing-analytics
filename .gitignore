@@ -1,0 +1,21 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+target/
+dbt_packages/
+logs/
+warehouse.duckdb
+warehouse.duckdb.wal
+.user.yml
+package-lock.yml
+.DS_Store
+
+
+# Private/source data
+data/raw/*.csv
+# Local DuckDB databases
+warehouse*.duckdb
+warehouse*.duckdb.wal
+# macOS
+.DS_Store

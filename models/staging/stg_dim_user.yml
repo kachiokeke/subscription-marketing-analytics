@@ -1,0 +1,76 @@
+version: 2
+
+models:
+  - name: stg_dim_user
+    description: >
+      Cleaned user attributes with one row per user.
+      Duplicate records and conflicting attributes are resolved
+      with deterministic rules.
+
+    columns:
+      - name: user_id
+        description: "Unique identifier for the user."
+        tests:
+          - not_null
+          - unique
+
+      - name: gender
+        description: >
+          Normalized gender value. Contradictory known values
+          are standardized as unknown.
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - female
+                - male
+                - nonbinary
+                - prefer_not_to_say
+                - unknown
+
+      - name: country
+        description: >
+          Normalized country code. Missing and invalid values
+          are standardized as unknown.
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - AU
+                - BR
+                - CA
+                - DE
+                - ES
+                - FR
+                - GB
+                - IN
+                - IT
+                - US
+                - unknown
+
+      - name: campaign_id
+        description: >
+          Campaign from the user profile source. The value is
+          null when duplicated source records disagree.
+
+      - name: has_gender_conflict
+        description: >
+          True when the source contains multiple informative
+          gender values for the same user.
+        tests:
+          - not_null
+
+      - name: has_country_conflict
+        description: >
+          True when the source contains multiple normalized
+          country values for the same user.
+        tests:
+          - not_null
+
+      - name: has_campaign_conflict
+        description: >
+          True when the source contains multiple campaign IDs
+          for the same user.
+        tests:
+          - not_null
+          

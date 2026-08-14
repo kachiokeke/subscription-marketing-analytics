@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: stg_marketing_spend
+    description: "Cleaned daily marketing spend by campaign."
+    columns:
+      - name: spend_date
+        description: "The day the spend was recorded."
+        tests:
+          - not_null
+      - name: campaign_id
+        description: "Foreign key to marketing_campaigns."
+        tests:
+          - not_null
+      - name: spend_amount
+        description: "Amount spent that day, in EUR."
+        tests:
+          - not_null

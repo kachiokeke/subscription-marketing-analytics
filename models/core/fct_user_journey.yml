@@ -1,0 +1,61 @@
+version: 2
+
+models:
+  - name: fct_user_journey
+    description: >
+      User-level conversion journey with one row per user.
+      The model combines profile attributes, campaign
+      attribution, journey outcomes, and sale revenue.
+
+    columns:
+      - name: user_id
+        description: "Unique identifier for the user."
+        tests:
+          - not_null
+          - unique
+
+      - name: campaign_id
+        description: >
+          Campaign assigned on the user's onboarding event.
+        tests:
+          - not_null
+
+      - name: attribution_date
+        description: >
+          Date used to connect the user to campaign spend.
+        tests:
+          - not_null
+
+      - name: onboarding_at
+        description: "Timestamp of the onboarding event."
+        tests:
+          - not_null
+
+      - name: started_trial
+        description: >
+          One when the user has a recorded trial event.
+          Zero otherwise.
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - 0
+                - 1
+
+      - name: made_sale
+        description: >
+          One when the user has at least one sale event.
+          Zero otherwise.
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                - 0
+                - 1
+
+      - name: total_sale_revenue
+        description: >
+          Sum of revenue from all recorded sale events
+          for the user.
+        tests:
+          - not_null

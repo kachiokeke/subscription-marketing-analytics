@@ -2,6 +2,8 @@
 
 An end-to-end analytics project that transforms raw subscription marketing and user-event data into tested campaign-performance metrics, interpretable conversion models, and a decision-focused Streamlit application.
 
+### [View the Live Dashboard →](https://subscription-marketing-analytics.streamlit.app)
+
 > **Data availability:** The original raw data was provided as part of a private technical exercise and is intentionally excluded from this public repository. The transformation, testing, modelling, and application logic are included in full.
 
 ## Dashboard Preview

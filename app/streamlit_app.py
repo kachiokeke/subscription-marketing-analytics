@@ -17,7 +17,16 @@ import pandas as pd
 import streamlit as st
 
 
-WAREHOUSE = Path(__file__).resolve().parents[1] / "warehouse.duckdb"
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+
+LOCAL_WAREHOUSE = PROJECT_ROOT / "warehouse.duckdb"
+PORTFOLIO_WAREHOUSE = PROJECT_ROOT / "portfolio.duckdb"
+
+WAREHOUSE = (
+    LOCAL_WAREHOUSE
+    if LOCAL_WAREHOUSE.exists()
+    else PORTFOLIO_WAREHOUSE
+)
 
 TARGET_LABELS = {
     "started_trial": "Trial start",

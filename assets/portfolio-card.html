@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Subscription Marketing Analytics Card</title>
+  <style>
+    :root {
+      --bg: #06111f;
+      --panel: #0f1d33;
+      --panel-2: #13233b;
+      --text: #f4f7fb;
+      --muted: #b8c3d6;
+      --accent: #4c6fff;
+      --border: rgba(255,255,255,0.08);
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      width: 1280px;
+      height: 640px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at top left, rgba(76,111,255,0.20), transparent 30%),
+        linear-gradient(135deg, #050d18 0%, #081324 100%);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, Helvetica, Arial, sans-serif;
+    }
+
+    .card {
+      width: 1280px;
+      height: 640px;
+      padding: 48px 56px;
+      display: grid;
+      grid-template-columns: 1.05fr 1.15fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    .left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      width: fit-content;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #9ab0ff;
+      background: rgba(76,111,255,0.12);
+      border: 1px solid rgba(76,111,255,0.25);
+      border-radius: 999px;
+      padding: 8px 14px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      font-size: 54px;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 22px;
+      max-width: 560px;
+    }
+
+    .subtitle {
+      font-size: 23px;
+      line-height: 1.45;
+      color: var(--muted);
+      max-width: 560px;
+      margin-bottom: 28px;
+    }
+
+    .bullets {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .bullet {
+      font-size: 18px;
+      color: #dce5f3;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-top: 9px;
+      flex: 0 0 auto;
+    }
+
+    .stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      font-size: 15px;
+      font-weight: 600;
+      color: #dbe7ff;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 9px 14px;
+    }
+
+    .right {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .shot-frame {
+      width: 100%;
+      max-width: 650px;
+      background: linear-gradient(180deg, #152540 0%, #0d1a2d 100%);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      padding: 14px;
+    }
+
+    .browser-bar {
+      height: 28px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 10px;
+      margin-bottom: 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.06);
+    }
+
+    .browser-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.35);
+    }
+
+    .screenshot-wrap {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: #0b1322;
+    }
+
+    .screenshot-wrap img {
+      width: 100%;
+      display: block;
+    }
+
+    .footer-note {
+      position: absolute;
+      bottom: 24px;
+      right: 40px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.03em;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="left">
+      <div class="eyebrow">Portfolio Project</div>
+      <h1>Subscription Marketing Analytics</h1>
+      <div class="subtitle">
+        End-to-end analytics workflow that transforms raw acquisition and user-event data into campaign decisions, conversion insights, and a decision-focused dashboard.
+      </div>
+
+      <div class="bullets">
+        <div class="bullet"><span class="dot"></span><span>Evaluated campaign efficiency and revenue contribution</span></div>
+        <div class="bullet"><span class="dot"></span><span>Built tested dbt models in DuckDB</span></div>
+        <div class="bullet"><span class="dot"></span><span>Used machine learning to explain trial and sale conversion</span></div>
+      </div>
+
+      <div class="stack">
+        <div class="tag">dbt</div>
+        <div class="tag">DuckDB</div>
+        <div class="tag">Python</div>
+        <div class="tag">scikit-learn</div>
+        <div class="tag">Streamlit</div>
+        <div class="tag">Marketing Analytics</div>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="shot-frame">
+        <div class="browser-bar">
+          <div class="browser-dot"></div>
+          <div class="browser-dot"></div>
+          <div class="browser-dot"></div>
+        </div>
+        <div class="screenshot-wrap">
+          <img src="./campaign-dashboard.png" alt="Dashboard preview" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-note">Sanitized portfolio version, raw source data excluded</div>
+</body>
+</html>
